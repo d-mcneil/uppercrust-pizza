@@ -1,73 +1,52 @@
 <template>
 	<ul>
-		<router-link :to="{ name: 'home' }"
-			><li @click.stop="hideDropDownMenu">Home</li></router-link
-		>
+		<router-link :to="{ name: 'home' }">
+			<li @click="hideDropDownMenu">Home</li>
+		</router-link>
 		<!-- ********************************** ROUTES FOR CUSTOMER PAGES ********************************** -->
-		<router-link
-			:to="{ name: 'customer-menu' }"
-			v-if="!isEmployeePage"
-			><li @click.stop="hideDropDownMenu">Menu</li></router-link
-		>
-		<router-link
-			:to="{ name: 'my-account' }"
-			v-if="!isEmployeePage && $store.state.token"
-			class="jump hide-when-small-screen"
-			><li @click.stop="hideDropDownMenu">My Account</li></router-link
-		>
-		<router-link
-			:to="{ name: 'my-order' }"
-			v-if="
-				!isEmployeePage && !isOrderPage && Object.keys($store.state.cart).length
-			"
-			><li @click.stop="hideDropDownMenu">My Order</li></router-link
-		>
-		<router-link
-			:to="{ name: 'checkout' }"
-			v-if="isOrderPage"
-			><li @click.stop="hideDropDownMenu">Checkout</li></router-link
-		>
+		<router-link :to="{ name: 'customer-menu' }" v-if="!isEmployeePage">
+			<li @click="hideDropDownMenu">Menu</li>
+		</router-link>
+		<router-link :to="{ name: 'my-account' }" v-if="!isEmployeePage && $store.state.token"
+			class="jump hide-when-small-screen">
+			<li @click="hideDropDownMenu">My Account</li>
+		</router-link>
+		<router-link :to="{ name: 'my-order' }" v-if="!isEmployeePage && !isOrderPage && Object.keys($store.state.cart).length
+			">
+			<li @click="hideDropDownMenu">My Order</li>
+		</router-link>
+		<router-link :to="{ name: 'checkout' }" v-if="isOrderPage">
+			<li @click="hideDropDownMenu">Checkout</li>
+		</router-link>
 		<!-- ********************************** ROUTES FOR EMPLOYEE PAGES ********************************** -->
-		<router-link
-			:to="{ name: 'pending-orders' }"
-			v-if="isEmployeePage && isLoggedIn"
-			><li @click.stop="hideDropDownMenu">Orders</li></router-link
-		>
-		<router-link
-			:to="{ name: 'specialty-pizzas' }"
-			v-if="isEmployeePage && isLoggedIn"
-			><li @click.stop="hideDropDownMenu">Pizzas</li></router-link
-		>
-		<router-link
-			:to="{ name: 'pizza-options' }"
-			v-if="isEmployeePage && isLoggedIn"
-			><li @click.stop="hideDropDownMenu">Options</li></router-link
-		>
+		<router-link :to="{ name: 'pending-orders' }" v-if="isEmployeePage && isLoggedIn">
+			<li @click="hideDropDownMenu">Orders</li>
+		</router-link>
+		<router-link :to="{ name: 'specialty-pizzas' }" v-if="isEmployeePage && isLoggedIn">
+			<li @click="hideDropDownMenu">Pizzas</li>
+		</router-link>
+		<router-link :to="{ name: 'pizza-options' }" v-if="isEmployeePage && isLoggedIn">
+			<li @click="hideDropDownMenu">Options</li>
+		</router-link>
 		<!-- <router-link
 			:to="{ name: 'employee-login' }"
 			v-if="isEmployeePage && !isLoggedIn && $route.path.includes('register')"
 			
-			><li @click.stop="hideDropDownMenu">Login</li></router-link
+			><li @click="hideDropDownMenu">Login</li></router-link
 		> -->
-		<router-link
-			:to="{ name: 'employee-register' }"
-			v-if="
-				isEmployeePage &&
-				isLoggedIn &&
-				$store.state.user.authorities
-					.map((role) => role.name.toLowerCase().replace('role_', ''))
-					.indexOf('admin') > -1
-			"
-			><li @click.stop="hideDropDownMenu">Register</li></router-link
-		>
+		<router-link :to="{ name: 'employee-register' }" v-if="isEmployeePage &&
+			isLoggedIn &&
+			$store.state.user.authorities
+				.map((role) => role.name.toLowerCase().replace('role_', ''))
+				.indexOf('admin') > -1
+			">
+			<li @click="hideDropDownMenu">Register</li>
+		</router-link>
 
 		<!-- ********************************** LOGOUT FOR BOTH PAGES ********************************** -->
-		<router-link
-			v-bind:to="{ name: 'logout' }"
-			v-if="isLoggedIn"
-			class="hide-when-small-screen"
-			><li @click.stop="hideDropDownMenu">Logout</li></router-link
-		>
+		<router-link v-bind:to="{ name: 'logout' }" v-if="isLoggedIn" class="hide-when-small-screen">
+			<li @click="hideDropDownMenu">Logout</li>
+		</router-link>
 	</ul>
 </template>
 
@@ -86,7 +65,7 @@ export default {
 	},
 	methods: {
 		hideDropDownMenu() {
-			this.$store.commit("TOGGLE_DROP_DOWN_MENU");
+			this.$store.dispatch("hideDropDownMenu");
 		},
 	},
 };
