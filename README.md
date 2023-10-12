@@ -1,4 +1,4 @@
-<h1 align="center">SmartBrain Face Detection</h1>
+<h1 align="center">UpperCrust Pizza</h1>
 
 - Developed **Vue** front end of a **mobile-first**, **responsively designed**, full-stack web application for a hypothetical pizza shop, enabling customers to place orders and employees to manage menu
 - Instituted routing with **Vue Router** and managed state with **Vuex**
