@@ -255,8 +255,8 @@ export default {
           },
           "77XdGvOEdfvrk3zku" // public key
         );
-      } catch (error) {
-        console.log({ error });
+      } catch {
+        // (error) TODO: // handle error, probably with a JavaScript alert like in other components
       }
     },
   },

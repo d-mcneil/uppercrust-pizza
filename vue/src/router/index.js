@@ -175,7 +175,6 @@ router.beforeEach((to, from, next) => {
 
 		// Only admins can register new employees
 		if (to.name === "employee-register") {
-			console.log(isAdmin(roles));
 			if (isAdmin(roles)) {
 				next();
 			} else if (isEmployee(roles)) {
