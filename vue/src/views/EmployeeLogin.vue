@@ -52,7 +52,7 @@
 import AnAlert from "../components/AnAlert.vue";
 import HorizontalHero from "../components/HorizontalHero.vue";
 import SmallButton from "../components/SmallButton.vue";
-import UserInput from "../components/UserInput.vue";
+import UserInput from "../components/UserInput";
 import authService from "../services/AuthService";
 
 export default {

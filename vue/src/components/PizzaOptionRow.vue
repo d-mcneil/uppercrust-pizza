@@ -70,11 +70,6 @@ export default {
       this.price = "";
       this.isAvailable = true;
     },
-    handleChange() {
-      if (this.option) {
-        this.saveChanges();
-      }
-    },
     formatAsMoney(event) {
       const price = event.target.value
         ? event.target.value >= 1000
@@ -91,6 +86,20 @@ export default {
     },
     saveChanges() {
       if (!this.option) return;
+
+      // ******************* THE DEMO EMPLOYEE ACCOUNT CAN'T MAKE ANY CHANGES, SO ALERT AND PREVENT FROM MAKING REQUEST
+      if (
+        this.$store.state.user.authorities
+          .map((role) => role.name.toLowerCase().replace("role_", ""))
+          .indexOf("demo_employee") > -1
+      ) {
+        alert(
+          "The demo employee account cannot make any changes to existing data or create new data."
+        );
+        return;
+      }
+      // **************************************************************************************************************
+
       const { areInputsValid, optionsCategory, id, price, name, isAvailable } =
         this;
       if (areInputsValid()) {
@@ -112,6 +121,19 @@ export default {
       }
     },
     addNewOption() {
+      // ******************* THE DEMO EMPLOYEE ACCOUNT CAN'T MAKE ANY CHANGES, SO ALERT AND PREVENT FROM MAKING REQUEST
+      if (
+        this.$store.state.user.authorities
+          .map((role) => role.name.toLowerCase().replace("role_", ""))
+          .indexOf("demo_employee") > -1
+      ) {
+        alert(
+          "The demo employee account cannot make any changes to existing data or create new data."
+        );
+        return;
+      }
+      // **************************************************************************************************************
+
       const { name, price, isAvailable, areInputsValid, optionsCategory } =
         this;
       if (areInputsValid()) {
