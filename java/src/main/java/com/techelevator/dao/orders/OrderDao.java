@@ -11,4 +11,5 @@ public interface OrderDao {
     List<Order> getAllOrders();
     boolean updateStatus(OrderStatus orderStatus);
     List<Order> getAllOrdersByStatus(String status);
+    List<Order> getDemoOrdersByStatus(String status);
 }

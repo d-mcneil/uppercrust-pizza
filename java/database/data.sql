@@ -1,13 +1,12 @@
 BEGIN TRANSACTION;
 
-INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
-INSERT INTO users (user_id, username, password_hash, role) VALUES (-1,'Guest','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_GUEST');
-
+INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$10$Y5W4EEPKzM74ecV5elzFveaYt93aESEY2Q9TatTAB8IhJh7WjJUoe','ROLE_ADMIN');
+INSERT INTO users (username,password_hash,role) VALUES ('demo_employee','$2a$10$RB5RHukIyOkETKdr9TNIjOsB5C6Yyet4stE9Aoo1Z1MytvTnjntiq','ROLE_DEMO_EMPLOYEE');
+INSERT INTO users (user_id, username, password_hash, role) VALUES (-1,'Guest','$2a$10$hbY/I/JxFCgxME3aGnurGOFaoQPdy7giSzchdfKWVD.X2UFVXzGpC','ROLE_GUEST');
 
 INSERT INTO user_data (user_id) VALUES (1);
-INSERT INTO user_data (user_id) VALUES (2);
-
+INSERT INTO user_data (user_id, name, email, address, phone) VALUES (2, 'Employee', 'demo_employee@example.com', '123 Somewhere Dr.|||Columbus|||Ohio|||12345', '1234567890');
+INSERT INTO user_data (user_id) VALUES (-1);
 
 INSERT INTO toppings (name, available, price) VALUES ('Mozzarella Cheese', true, 0.50); -- 1 --
 INSERT INTO toppings (name, available, price) VALUES ('Pepperoni', true, 0.50); -- 2 --
@@ -25,7 +24,7 @@ INSERT INTO toppings (name, available, price) VALUES ('Feta Cheese', true, 0.75)
 INSERT INTO toppings (name, available, price) VALUES ('Parmesan Cheese', true, 0.50); -- 14 --
 INSERT INTO toppings (name, available, price) VALUES ('Tomatoes', true, 0.50); -- 15 --
 INSERT INTO toppings (name, available, price) VALUES ('Banana Peppers', true, 0.50); -- 16 --
-INSERT INTO toppings (name, available, price) VALUES ('Jalapeño Peppers', true, 0.50); -- 17 --
+INSERT INTO toppings (name, available, price) VALUES ('Jalapeno Peppers', true, 0.50); -- 17 --
 INSERT INTO toppings (name, available, price) VALUES ('Artichokes', true, 0.75); -- 18 --
 INSERT INTO toppings (name, available, price) VALUES ('Kale', true, 0.75); -- 19 --
 INSERT INTO toppings (name, available, price) VALUES ('Red Pepper', true, 0.50); -- 20 --

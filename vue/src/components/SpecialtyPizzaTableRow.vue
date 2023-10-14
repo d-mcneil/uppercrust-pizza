@@ -268,6 +268,19 @@ export default {
       }
     },
     saveChanges() {
+      // ******************* THE DEMO EMPLOYEE ACCOUNT CAN'T MAKE ANY CHANGES, SO ALERT AND PREVENT FROM MAKING REQUEST
+      if (
+        this.$store.state.user.authorities
+          .map((role) => role.name.toLowerCase().replace("role_", ""))
+          .indexOf("demo_employee") > -1
+      ) {
+        alert(
+          "The demo employee account cannot make any changes to existing data or create new data."
+        );
+        return;
+      }
+      // **************************************************************************************************************
+
       const { areInputsValid, buildSpecialtyPizza, pizzaId } = this;
       let updatedSpecialtyPizza;
 
@@ -330,6 +343,19 @@ export default {
       return specialtyPizza;
     },
     addNewSpecialtyPizza() {
+      // ******************* THE DEMO EMPLOYEE ACCOUNT CAN'T MAKE ANY CHANGES, SO ALERT AND PREVENT FROM MAKING REQUEST
+      if (
+        this.$store.state.user.authorities
+          .map((role) => role.name.toLowerCase().replace("role_", ""))
+          .indexOf("demo_employee") > -1
+      ) {
+        alert(
+          "The demo employee account cannot make any changes to existing data or create new data."
+        );
+        return;
+      }
+      // **************************************************************************************************************
+
       const {
         areInputsValid,
         name,

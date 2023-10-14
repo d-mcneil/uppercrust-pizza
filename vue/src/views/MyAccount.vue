@@ -87,7 +87,7 @@
 import HorizontalHero from "../components/HorizontalHero.vue";
 import AnAlert from "../components/AnAlert.vue";
 import SmallButton from "../components/SmallButton.vue";
-import UserInput from "../components/UserInput.vue";
+import UserInput from "../components/UserInput";
 import userDataService from "../services/UserDataService.js";
 
 export default {
@@ -129,6 +129,19 @@ export default {
   },
   methods: {
     updateUserInfo() {
+      // ******************* THE DEMO EMPLOYEE ACCOUNT CAN'T MAKE ANY CHANGES, SO ALERT AND PREVENT FROM MAKING REQUEST
+      if (
+        this.$store.state.user.authorities
+          .map((role) => role.name.toLowerCase().replace("role_", ""))
+          .indexOf("demo_employee") > -1
+      ) {
+        alert(
+          "The demo employee account cannot make any changes to existing data or create new data."
+        );
+        return;
+      }
+      // **************************************************************************************************************
+
       const {
         address,
         cardNumber,

@@ -163,6 +163,39 @@ public class JdbcOrderDao implements OrderDao{
     }
 
     @Override
+    public List<Order> getDemoOrdersByStatus(String status) {
+        String sql = "SELECT * FROM orders JOIN user_data ON orders.data_id = user_data.data_id WHERE status = ? AND orders.order_id BETWEEN 1 AND 3;";
+        List<Order> orderList = new ArrayList<>();
+        try {
+            Order order = new Order();
+            SqlRowSet row = jdbcTemplate.queryForRowSet(sql, status);
+            while(row.next()){
+                order = mapRowToOrder(row);
+                Map<Integer, Integer> items = getItemsByOrderId(order.getOrderId());
+                List<MenuItem> menuItems = new ArrayList<>();
+                List<Pizza> pizzas = new ArrayList<>();
+                for(Map.Entry<Integer, Integer> currentItem : items.entrySet()){
+                    if(currentItem.getKey() >= 1001){
+                        Pizza pizza = pizzaDao.getPizzaById(currentItem.getKey());
+                        pizza.setQuantity(currentItem.getValue());
+                        pizzas.add(pizza);
+                    }else if(currentItem.getKey() > 0){
+                        MenuItem menuItem = menuItemDao.getMenuItemById(currentItem.getKey());
+                        menuItem.setQuantity(currentItem.getValue());
+                        menuItems.add(menuItem);
+                    }
+                }
+                order.setCustomPizzas(pizzas);
+                order.setMenuItems(menuItems);
+                orderList.add(order);
+            }
+        } catch (ResourceAccessException | DataAccessException e){
+            System.out.println(e.getMessage());
+        }
+        return orderList;
+    }
+
+    @Override
     public boolean updateStatus(OrderStatus orderStatus) {
         String sql = "UPDATE orders SET status = ? WHERE order_id = ?;";
         int numOfRows = 0;
