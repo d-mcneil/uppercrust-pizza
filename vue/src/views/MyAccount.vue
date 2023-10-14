@@ -183,9 +183,8 @@ section.customer-section#my-account label {
 
 <style scoped>
 div[role="alert"]#disclaimer {
-  --text-indent: -6.5rem;
-  text-indent: var(--text-indent);
-  padding-left: calc((-1 * var(--text-indent)));
+  text-indent: -6.5rem;
+  padding-left: 6.5rem;
   text-align: justify;
 }
 </style>
