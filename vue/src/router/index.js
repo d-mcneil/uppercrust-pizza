@@ -160,7 +160,7 @@ const getRoles = () =>
 	);
 
 const isAdmin = (roles) => roles.indexOf("admin") > -1;
-const isEmployee = (roles) => roles.indexOf("employee") > -1;
+const isEmployee = (roles) => roles.indexOf("employee") > -1 || roles.indexOf("demo_employee") > -1;
 
 router.beforeEach((to, from, next) => {
 	// Determine if the route requires Authentication

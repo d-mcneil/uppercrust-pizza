@@ -61,6 +61,12 @@ public class OrdersController {
         return orderDao.getAllOrdersByStatus(status);
     }
 
+    @Secured({"ROLE_DEMO_EMPLOYEE"})
+    @RequestMapping(path = "/demo-orders/status", method = RequestMethod.GET)
+    public List<Order> getDemoOrdersByStatus(@RequestParam(value = "status") String status){
+        return orderDao.getDemoOrdersByStatus(status);
+    }
+
     @Secured({"ROLE_EMPLOYEE", "ROLE_ADMIN", "ROLE_USER" })
     @RequestMapping(path = "/orders/{id}", method = RequestMethod.GET)
     public Order getOrderById(@PathVariable int id, Authentication authentication, Principal principal){

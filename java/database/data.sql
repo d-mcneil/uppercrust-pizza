@@ -24,7 +24,7 @@ INSERT INTO toppings (name, available, price) VALUES ('Feta Cheese', true, 0.75)
 INSERT INTO toppings (name, available, price) VALUES ('Parmesan Cheese', true, 0.50); -- 14 --
 INSERT INTO toppings (name, available, price) VALUES ('Tomatoes', true, 0.50); -- 15 --
 INSERT INTO toppings (name, available, price) VALUES ('Banana Peppers', true, 0.50); -- 16 --
-INSERT INTO toppings (name, available, price) VALUES ('Jalapeño Peppers', true, 0.50); -- 17 --
+INSERT INTO toppings (name, available, price) VALUES ('Jalapeno Peppers', true, 0.50); -- 17 --
 INSERT INTO toppings (name, available, price) VALUES ('Artichokes', true, 0.75); -- 18 --
 INSERT INTO toppings (name, available, price) VALUES ('Kale', true, 0.75); -- 19 --
 INSERT INTO toppings (name, available, price) VALUES ('Red Pepper', true, 0.50); -- 20 --
